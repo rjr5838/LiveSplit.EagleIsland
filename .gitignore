@@ -1,0 +1,7 @@
+﻿/bin
+/.vs
+/obj/Release
+/obj/Debug
+/Components/LiveSplit.EagleIsland.exe
+/LiveSplit.EagleIsland.csproj.user
+/Components/EagleIsland Manager.exe
