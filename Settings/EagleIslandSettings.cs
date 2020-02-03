@@ -20,7 +20,7 @@ namespace LiveSplit.EagleIsland
 
 			component = comp;
 			Splits = new List<EagleIslandSplit>();
-			Splits.Add(new EagleIslandSplit("Start Game", "True"));
+			Splits.Add(new EagleIslandSplit("Start Game", ""));
 			isLoading = false;
 		}
 
@@ -45,7 +45,7 @@ namespace LiveSplit.EagleIsland
 				setting.cboName.ValueMember = "LevelEnum";
 				setting.cboName.DataSource = SplitComboData();
 				setting.cboName.Text = split.Field;
-				setting.cboName.SelectedValue = split.Value;
+				setting.cboName.SelectedValue = split.LevelEnum;
 				setting.chkShouldSplit.Checked = split.ShouldSplit;
 				AddHandlers(setting);
 				flowMain.Controls.Add(setting);
@@ -105,7 +105,7 @@ namespace LiveSplit.EagleIsland
 				xmlSplit.InnerText = split.Field;
 
 				XmlAttribute att = document.CreateAttribute("LevelEnum");
-				att.Value = split.Value;
+				att.Value = split.LevelEnum;
 				xmlSplit.Attributes.Append(att);
 
 				att = document.CreateAttribute("ShouldSplit");
@@ -127,17 +127,36 @@ namespace LiveSplit.EagleIsland
 			}
 		}
 		private void btnAddSplit_Click(object sender, EventArgs e) {
+			AddSplit("Start Game");
+			UpdateSplits();
+		}
+
+		private void AddSplit(String text)
+		{
 			EagleIslandSplitSettings setting = new EagleIslandSplitSettings();
 			setting.cboName.DisplayMember = "SplitName";
 			setting.cboName.ValueMember = "LevelEnum";
 			setting.cboName.DataSource = SplitComboData();
-			setting.cboName.Text = "Start Game";
+			setting.cboName.Text = text;
 			setting.chkShouldSplit.Checked = true;
 			AddHandlers(setting);
-
 			flowMain.Controls.Add(setting);
+		}
+
+		private void btnAnyPercent_Click(object sender, EventArgs e)
+		{
+			for (int i = flowMain.Controls.Count - 1; i > 0; i--)
+			{
+				if (flowMain.Controls[i] is EagleIslandSplitSettings)
+				{
+					RemoveHandlers((EagleIslandSplitSettings)flowMain.Controls[i]);
+					flowMain.Controls.RemoveAt(i);
+				}
+			}
+			EagleIslandSplitSettings.AnyPercentSplits.ForEach(split => AddSplit(split));
 			UpdateSplits();
 		}
+
 		public DataTable SplitComboData() {
 			DataTable dt = new DataTable();
 			dt.Columns.Add("SplitName", typeof(string));

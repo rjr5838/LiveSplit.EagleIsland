@@ -7,6 +7,23 @@ namespace LiveSplit.EagleIsland.Settings {
 		private bool isDragging = false;
 		private int mX = 0;
 		private int mY = 0;
+		public static List<string> AnyPercentSplits = new List<string>()
+		{
+			"Start Game",
+			"Greenwood Glade",
+			"Gemshine Mines",
+			"Smuggleway Bay",
+			"Armaura 1",
+			"Woodberry Warren",
+			"Sanctuary Swamp",
+			"Pinnacle Peak",
+			"Armaura 2",
+			"Hollow Hestia",
+			"Falcon's Furnace",
+			"Tomb of the Raven",
+			"Ornis"
+		};
+
 		public static Dictionary<string, string> AvailableSplits = new Dictionary<string, string>()
 		{
 			{"Start Game",             ""},

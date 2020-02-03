@@ -12,6 +12,6 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyCulture("")]
 [assembly: ComVisible(false)]
 [assembly: Guid("1860c0d8-14a1-49d5-b488-c60bcdfcf002")]
-[assembly: AssemblyVersion("1.0.0")]
-[assembly: AssemblyFileVersion("1.0.0")]
+[assembly: AssemblyVersion("1.0.0.1")]
+[assembly: AssemblyFileVersion("1.0.0.1")]
 [assembly: ComponentFactory(typeof(EagleIslandFactory))]

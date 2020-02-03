@@ -115,7 +115,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Components\LiveSplit.Kalimba.dll" />
+    <Content Include="Components\LiveSplit.EagleIsland.dll" />
     <Content Include="Components\LiveSplit.EagleIsland.Updates.xml" />
     <None Include="Resources\eagleisland.ico" />
     <Content Include="eagleisland.ico" />

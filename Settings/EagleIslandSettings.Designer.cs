@@ -33,6 +33,7 @@
             this.flowMain = new System.Windows.Forms.FlowLayoutPanel();
             this.flowOptions = new System.Windows.Forms.FlowLayoutPanel();
             this.toolTips = new System.Windows.Forms.ToolTip(this.components);
+            this.btnAnyPercent = new System.Windows.Forms.Button();
             this.flowMain.SuspendLayout();
             this.flowOptions.SuspendLayout();
             this.SuspendLayout();
@@ -58,7 +59,7 @@
             this.flowMain.Location = new System.Drawing.Point(0, 0);
             this.flowMain.Margin = new System.Windows.Forms.Padding(0);
             this.flowMain.Name = "flowMain";
-            this.flowMain.Size = new System.Drawing.Size(63, 27);
+            this.flowMain.Size = new System.Drawing.Size(126, 27);
             this.flowMain.TabIndex = 0;
             this.flowMain.WrapContents = false;
             this.flowMain.DragDrop += new System.Windows.Forms.DragEventHandler(this.flowMain_DragDrop);
@@ -69,13 +70,24 @@
             // 
             this.flowOptions.AutoSize = true;
             this.flowOptions.Controls.Add(this.btnAddSplit);
+            this.flowOptions.Controls.Add(this.btnAnyPercent);
             this.flowOptions.Location = new System.Drawing.Point(0, 0);
             this.flowOptions.Margin = new System.Windows.Forms.Padding(0);
             this.flowOptions.Name = "flowOptions";
-            this.flowOptions.Size = new System.Drawing.Size(63, 27);
+            this.flowOptions.Size = new System.Drawing.Size(126, 27);
             this.flowOptions.TabIndex = 0;
             // 
-            // OriSettings
+            // btnAnyPercent
+            // 
+            this.btnAnyPercent.Location = new System.Drawing.Point(66, 3);
+            this.btnAnyPercent.Name = "btnAnyPercent";
+            this.btnAnyPercent.Size = new System.Drawing.Size(57, 21);
+            this.btnAnyPercent.TabIndex = 1;
+            this.btnAnyPercent.Text = "Any%";
+            this.btnAnyPercent.UseVisualStyleBackColor = true;
+            this.btnAnyPercent.Click += new System.EventHandler(this.btnAnyPercent_Click);
+            // 
+            // EagleIslandSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -85,7 +97,7 @@
             this.Controls.Add(this.flowMain);
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "EagleIslandSettings";
-            this.Size = new System.Drawing.Size(63, 27);
+            this.Size = new System.Drawing.Size(126, 27);
             this.Load += new System.EventHandler(this.EagleIslandSettings_Load);
             this.flowMain.ResumeLayout(false);
             this.flowMain.PerformLayout();
@@ -100,5 +112,6 @@
         private System.Windows.Forms.FlowLayoutPanel flowMain;
         private System.Windows.Forms.FlowLayoutPanel flowOptions;
         private System.Windows.Forms.ToolTip toolTips;
+        private System.Windows.Forms.Button btnAnyPercent;
     }
 }

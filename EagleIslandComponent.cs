@@ -64,46 +64,40 @@ namespace LiveSplit.EagleIsland
 			{
 				bool shouldSplit = false;
 				EagleIslandSplit split = settings.Splits[currentSplit];
-				if (split.Field == "Start Game")
+				Levels level;
+				switch (split.Field)
 				{
-					shouldSplit = mem.GetIntroPanelsActive();
-				}
-				else
-				{
-					Levels level;
-					switch (split.Field)
-					{
-						case "Greenwood Glade":
-						case "Gemshine Mines":
-						case "Smuggleway Bay":
-						case "Hollow Hestia":
-						case "Falcon's Furnace":
-						case "Tomb of the Raven":
-							currentLevel = mem.GetLevel();
-							level = (Levels)Enum.Parse(typeof(Levels), split.Value);
-							shouldSplit = currentLevel == (int)level && lastRoomType == 4 && mem.GetRoomType() == 0 && mem.GetCoordX() == 0 && mem.GetCoordY() == 0;
-							lastRoomType = mem.GetRoomType();
-							break;
-						case "Woodberry Warren":
-						case "Sanctuary Swamp":
-						case "Pinnacle Peak":
-							currentLevel = mem.GetLevel();
-							level = (Levels)Enum.Parse(typeof(Levels), split.Value);
-							shouldSplit = currentLevel == (int)level && lastRoomType == 2 && mem.GetRoomType() == 0 && mem.GetCoordX() == 0 && mem.GetCoordY() == 0;
-							lastRoomType = mem.GetRoomType();
-							break;
-						case "Armaura 1":
-							shouldSplit = mem.GetHubEvent() == 16 && mem.GetPosX() == 1158672630 && mem.GetPosY() == 1173225472;
-							break;
-						case "Armaura 2":
-							shouldSplit = mem.GetHubEvent() == 15 && mem.GetPosX() == 1154211840 && mem.GetPosY() == 1167802368;
-							break;
-						case "Ornis":
-							shouldSplit = mem.GetOrnisFrozen() && mem.GetHubEvent() == 4;
-							break;
-					}
-
-					
+					case "Start Game":
+						shouldSplit = mem.GetIntroPanelsActive();
+						break;
+					case "Greenwood Glade":
+					case "Gemshine Mines":
+					case "Smuggleway Bay":
+					case "Hollow Hestia":
+					case "Falcon's Furnace":
+					case "Tomb of the Raven":
+						currentLevel = mem.GetLevel();
+						level = (Levels)Enum.Parse(typeof(Levels), split.LevelEnum);
+						shouldSplit = currentLevel == (int)level && lastRoomType == 4 && mem.GetRoomType() == 0 && mem.GetCoordX() == 0 && mem.GetCoordY() == 0;
+						lastRoomType = mem.GetRoomType();
+						break;
+					case "Woodberry Warren":
+					case "Sanctuary Swamp":
+					case "Pinnacle Peak":
+						currentLevel = mem.GetLevel();
+						level = (Levels)Enum.Parse(typeof(Levels), split.LevelEnum);
+						shouldSplit = currentLevel == (int)level && lastRoomType == 2 && mem.GetRoomType() == 0 && mem.GetCoordX() == 0 && mem.GetCoordY() == 0;
+						lastRoomType = mem.GetRoomType();
+						break;
+					case "Armaura 1":
+						shouldSplit = mem.GetHubEvent() == 16 && mem.GetPosX() == 1158672630 && mem.GetPosY() == 1173225472;
+						break;
+					case "Armaura 2":
+						shouldSplit = mem.GetHubEvent() == 15 && mem.GetPosX() == 1154211840 && mem.GetPosY() == 1167802368;
+						break;
+					case "Ornis":
+						shouldSplit = mem.GetOrnisFrozen() && mem.GetHubEvent() == 4;
+						break;
 				}
 				
 				HandleSplit(shouldSplit, split);
